@@ -1,0 +1,1891 @@
+* {
+  margin: 0px;
+  padding: 0px;
+}
+@import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap");
+
+@import url("https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css");
+
+@import url("https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css");
+
+body {
+  font-family: "Lato", sans-serif;
+  font-size: 14px;
+  color: rgba(0, 0, 0, 0.8);
+  overflow-x: hidden;
+  font-size: 15px;
+}
+
+.bg-blue {
+  background: #7a55c1;
+}
+
+@media (min-width: 1300px) {
+  .container,
+  .container-lg,
+  .container-md,
+  .container-sm,
+  .container-xl {
+    max-width: 1200px;
+  }
+}
+
+.badge {
+  display: inline-block;
+  padding: 7px 10px;
+  border-radius: 20px;
+}
+
+.badge.bg-success {
+  background: #e5f8ed !important;
+  color: #16b858 !important;
+}
+
+.badge-success{
+  color: #00b853 !important;
+  background: #e5f8ed;
+}
+
+Button {
+  text-transform: capitalize !important;
+}
+
+.btn-blue {
+  background: #233a95 !important;
+  color: #fff !important;
+  text-transform: capitalize !important;
+}
+
+.btn-big {
+  font-size: 15px !important;
+  padding: 7px 30px !important;
+  min-width: auto !important;
+}
+
+.btn-round {
+  border-radius: 30px !important;
+}
+
+.btn-sml {
+  font-size: 12px !important;
+  color: #000;
+  text-transform: capitalize !important;
+}
+
+.btn-sml svg {
+  font-size: 20px;
+}
+
+.cursor {
+  cursor: pointer;
+}
+
+.text-light {
+  color: #868383 !important;
+}
+
+.text-sml {
+  font-size: 14px;
+}
+
+::-webkit-scrollbar {
+  width: 8px !important;
+  height: 8px !important;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #ccc !important;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent !important;
+}
+
+.headerWrapper {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.headerWrapper .top-strip {
+  padding: 8px 0px;
+}
+
+.headerWrapper .top-strip p {
+  color: #fff;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.headerWrapper .header {
+  width: 100%;
+  height: auto;
+  padding: 15px 0px;
+}
+.logoWrapper img {
+  width: 100%;
+}
+
+.headerWrapper .header .part2 .countryDrop {
+  width: 170px;
+  height: 60px;
+  min-width: 170px;
+  color: #000 !important;
+  border: 1px solid rgba(0, 0, 0, 0.2) !important;
+  border-radius: 7px !important;
+  padding: 10px 15px !important;
+}
+
+.headerWrapper .header .part2 .countryDrop {
+  text-align: left;
+  justify-content: flex-start !important;
+}
+
+.headerWrapper .header .part2 .countryDrop .label {
+  font-size: 12px !important;
+  text-transform: capitalize !important;
+  color: rgba(0, 0, 0, 0.5) !important;
+  line-height: 16px;
+}
+
+.headerWrapper .header .part2 .countryDrop .name {
+  font-size: 14px !important;
+  text-transform: capitalize !important;
+  color: #233a95 !important;
+  font-weight: 700;
+  line-height: 16px;
+}
+
+.headerWrapper .header .part2 .countryDrop span.ml-auto svg {
+  opacity: 0.7;
+}
+
+.headerSearch {
+  width: 60%;
+  height: 50px;
+  background: #f3f4f7;
+  padding: 5px;
+  position: relative;
+  border-radius: 5px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.headerSearch input {
+  background: transparent !important;
+  outline: none !important;
+  font-size: 15px;
+  color: rgba(0, 0, 0, 0.7);
+  width: 100%;
+  height: 45px;
+  border: 0px !important;
+  padding: 0px 20px !important;
+}
+
+.headerSearch input::-webkit-input-placeholder {
+  color: rgba(0, 0, 0, 0.4);
+}
+
+.headerSearch button {
+  position: absolute;
+  top: 5px;
+  right: 10px;
+  z-index: 100;
+  min-width: 40px !important;
+  height: 40px !important;
+  width: 40px !important;
+  border-radius: 50% !important;
+  color: #000;
+}
+
+.headerSearch button svg {
+  font-size: 25px;
+  opacity: 0.8;
+}
+
+.header .part3 .circle {
+  align-items: center;
+  justify-content: center;
+  min-width: 45px !important;
+  height: 45px !important;
+  width: 45px !important;
+  border-radius: 50% !important;
+  border: 1px solid rgba(0, 0, 0, 0.1) !important;
+  color: #000;
+}
+
+.header .part3 .circle svg {
+  font-size: 22px;
+}
+
+.cartTab .price {
+  font-size: 18px;
+  color: rgba(0, 0, 0, 0.8);
+  font-weight: 700;
+}
+
+.cartTab button {
+  background: #fff1ee !important;
+}
+
+.cartTab button svg {
+  color: #ea2b0f !important;
+}
+
+.cartTab .count {
+  position: absolute;
+  top: -6px;
+  right: -4px;
+  background: #ea2b0f;
+  border-radius: 50%;
+  color: #fff;
+  width: 20px;
+  height: 20px;
+}
+
+.locationModal .MuiPaper-elevation {
+  padding: 25px;
+  position: relative;
+}
+
+.locationModal .locationList {
+  margin-bottom: 0px;
+  max-height: 400px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+.locationModal .locationList li {
+  width: 100%;
+  list-style: none;
+}
+
+.locationModal .locationList li button {
+  width: 100%;
+  text-transform: capitalize !important;
+  color: #000 !important;
+  justify-content: flex-start !important;
+  padding: 10px 20px !important;
+  outline: none !important;
+}
+
+.locationModal .locationList li button:hover {
+  background: #f1f1f1 !important;
+}
+
+.locationModal .locationList li button.active {
+  background: #e2e2e2 !important;
+}
+
+.closeBtn {
+  position: absolute !important;
+  top: 10px;
+  right: 10px;
+  color: #000 !important;
+  min-width: 40px !important;
+  width: 40px !important;
+  height: 40px !important;
+  border-radius: 50% !important;
+  outline: none !important;
+}
+
+.closeBtn svg {
+  font-size: 22px !important;
+}
+
+nav .navPart1 {
+  max-width: 20%;
+  flex: 0 0 20%;
+}
+
+nav .navPart2 {
+  max-width: 80%;
+  flex: 0 0 80%;
+}
+
+nav .navPart1 .catWrapper {
+  position: relative;
+}
+
+nav .navPart1 .catWrapper .sidebarNav {
+  width: 100%;
+  height: 0px;
+  opacity: 0;
+  background: #fff;
+  position: absolute;
+  top: 136%;
+  left: 0px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  padding: 18px 0px;
+  transition: all 0.2s ease-in-out;
+  visibility: hidden;
+  z-index: 100;
+}
+
+nav .navPart1 .catWrapper .sidebarNav.open {
+  height: auto;
+  opacity: 1;
+  visibility: inherit;
+}
+
+nav .navPart1 .catWrapper .sidebarNav ul li {
+  width: 100%;
+  list-style: none;
+  padding: 0px 10px;
+}
+
+nav .navPart1 .catWrapper .sidebarNav ul li button {
+  color: #000;
+  width: 100%;
+  justify-content: flex-start;
+  text-transform: capitalize !important;
+  outline: none !important;
+}
+
+nav .navPart1 .catWrapper .sidebarNav ul li button svg {
+  font-size: 12px;
+  opacity: 0.6;
+}
+
+nav .navPart1 .catWrapper .sidebarNav ul li button:hover {
+  background: transparent !important;
+}
+
+nav .navPart1 .catWrapper .sidebarNav ul li {
+  position: static;
+}
+
+nav .navPart1 .catWrapper .sidebarNav ul li .submenu {
+  position: absolute;
+  top: 0px;
+  left: 105%;
+  width: 250px;
+  height: 100%;
+  background: #fff;
+  z-index: 100;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.2s ease-in-out;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  padding: 20px;
+}
+
+nav .navPart1 .catWrapper .sidebarNav ul li:hover .submenu {
+  opacity: 1;
+  visibility: inherit;
+  left: 100%;
+}
+
+nav .navPart1 .catWrapper .sidebarNav ul li:hover .submenu button {
+  border-radius: 0px !important;
+  color: #000 !important;
+}
+
+nav .navPart1 .catWrapper .sidebarNav ul li:hover .submenu button:hover {
+  color: #7a55c1 !important;
+}
+
+nav .allCatTab {
+  background: #2bbef9;
+  padding: 10px 15px !important;
+  border-radius: 30px !important;
+  outline: none !important;
+}
+
+nav .allCatTab * {
+  color: #fff;
+}
+
+nav .allCatTab:hover {
+  background: #2bbef9;
+}
+
+nav .allCatTab .text {
+  font-weight: 600;
+}
+
+nav .allCatTab .icon1 svg {
+  font-size: 20px !important;
+}
+
+nav .allCatTab .icon2 svg {
+  font-size: 15px !important;
+}
+
+nav .navPart2 ul {
+  margin-bottom: 0px;
+}
+
+nav .navPart2 ul li {
+  padding-bottom: 20px;
+}
+
+nav .navPart2 ul li a {
+  text-decoration: none;
+}
+
+nav .navPart2 ul li a button {
+  font-size: 15px !important;
+  font-weight: 500;
+  text-decoration: none;
+  color: rgba(0, 0, 0, 0.6);
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  padding: 8px 15px;
+  transition: all 0.2s ease-in-out;
+  border-radius: 25px;
+  outline: none !important;
+}
+
+nav .navPart2 ul li a svg {
+  font-size: 20px;
+}
+
+nav .navPart2 ul li a:hover {
+  background: #f0faff;
+  color: #2bbef9;
+}
+
+nav .navPart2 ul li {
+  position: relative;
+}
+
+nav .navPart2 ul li .submenu {
+  position: absolute;
+  top: 150%;
+  left: 0px;
+  min-width: 200px;
+  background: #fff;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.2s ease-in-out;
+  z-index: 100;
+}
+
+nav .navPart2 ul li .submenu a {
+  display: block;
+  width: 100%;
+}
+
+nav .navPart2 ul li .submenu a button {
+  width: 100%;
+  justify-content: flex-start !important;
+  border-radius: 0px !important;
+  text-transform: capitalize !important;
+  font-weight: 600 !important;
+}
+
+nav .navPart2 ul li .submenu a button:hover {
+  background: #f1f1f1 !important;
+}
+
+nav .navPart2 ul li:hover .submenu {
+  opacity: 1;
+  visibility: inherit;
+  top: 100%;
+}
+
+.homeBannerSection {
+  width: 100%;
+  height: 500px; /* Set a specific height for the banner */
+  position: relative; /* This is crucial for positioning the arrows */
+  overflow: hidden;
+}
+
+/* Ensure the slick-list and slick-track have proper dimensions */
+.homeBannerSection .slick-list,
+.homeBannerSection .slick-track,
+.homeBannerSection .slick-slide > div,
+.homeBannerSection .item {
+  height: 100%;
+  width: 100%;
+}
+
+.homeBannerSection * {
+  outline: none !important;
+}
+
+.homeBannerSection .item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* This is key to making the image fill the space */
+  display: block; /* Removes any default spacing */
+}
+
+/* Corrected CSS for home banner slick arrows
+*/
+.homeBannerSection .slick-arrow {
+  position: absolute;
+  top: 50%; /* Vertically center the arrow */
+  transform: translateY(
+    -50%
+  ); /* Adjust for the arrow's height to ensure perfect centering */
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px !important;
+  height: 40px !important;
+  background: #fff;
+  border-radius: 100%;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  transition: all 0.2s ease-in-out;
+}
+
+.homeBannerSection .slick-arrow.slick-next {
+  right: 25px !important; /* Position the right arrow */
+}
+
+.homeBannerSection .slick-arrow.slick-prev {
+  left: 25px !important; /* Position the left arrow */
+}
+
+.homeBannerSection .slick-arrow:hover {
+  background: #f1f1f1;
+}
+
+/* Remove FontAwesome specific styling */
+.homeBannerSection .slick-arrow::before {
+  content: "";
+  font-size: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* Add SVG as a background image for the arrows */
+.homeBannerSection .slick-arrow.slick-prev::before {
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' class='feather feather-chevron-left'%3E%3Cpolyline points='15 18 9 12 15 6'%3E%3C/polyline%3E%3C/svg%3E")
+    no-repeat center center;
+}
+
+.homeBannerSection .slick-arrow.slick-next::before {
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' class='feather feather-chevron-right'%3E%3Cpolyline points='9 18 15 12 9 6'%3E%3C/polyline%3E%3C/svg%3E")
+    no-repeat center center;
+}
+
+.homeBannerSection {
+  cursor: pointer;
+}
+
+.homeProducts {
+  padding: 5px 0px;
+  width: 100%;
+}
+
+/* .homeProducts .container {
+  
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+  padding-left: 40px;   
+  padding-right: 40px;  
+} */
+
+.homeProducts .banner {
+  width: 100%;
+  border-radius: 7px;
+  overflow: hidden;
+}
+
+/*
+  ========================================================================
+  Home Banner Section
+  ========================================================================
+*/
+
+.homeBannerSection {
+  position: relative;
+  overflow: hidden; /* Important to hide the rest of the slides */
+}
+
+/* Style the Swiper container */
+.homeBannerSection .mySwiper {
+  width: 100%;
+  height: auto;
+  padding: 0;
+}
+
+/* Style each individual slide */
+.homeBannerSection .swiper-slide {
+  width: 80%; /* Adjust this to control how much of the next/prev slides are visible */
+  height: 100%;
+  transition: transform 0.3s ease-in-out;
+  border-radius: 8px; /* Optional: adds rounded corners to the slides */
+  overflow: hidden;
+}
+
+/* Make the active slide slightly larger or have a different effect */
+.homeBannerSection .swiper-slide-active {
+  transform: scale(1);
+}
+
+.homeBannerSection .swiper-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Style the Swiper navigation buttons */
+.homeBannerSection .swiper-button-prev,
+.homeBannerSection .swiper-button-next {
+  color: #000000;
+  background-color: rgb(255, 255, 255);
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s;
+}
+
+.homeBannerSection .swiper-button-prev:hover,
+.homeBannerSection .swiper-button-next:hover {
+  background-color: rgba(118, 255, 255, 0.7);
+}
+
+.productRow .swiper{
+  padding-right: 80px !important;
+}
+
+.productRow .hd {
+  font-size: 25px;
+  font-weight: 600;
+}
+
+/* Updated CSS for the product row slider arrows */
+.product_row .slick-arrow {
+  position: absolute;
+  top: 30%; /* Adjust as needed to align with your products */
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px !important;
+  height: 40px !important;
+  background: #fff;
+  border-radius: 100%;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Add a subtle shadow to make them stand out */
+  cursor: pointer;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  transition: all 0.2s ease-in-out;
+}
+
+.product_row .slick-arrow.slick-next {
+  right: -20px !important; /* Adjust position to outside the container if needed */
+}
+
+.product_row .slick-arrow.slick-prev {
+  left: -20px !important; /* Adjust position to outside the container if needed */
+}
+
+.product_row .slick-arrow:hover {
+  background: #f1f1f1;
+}
+
+.product_row .slick-arrow.slick-next::before,
+.product_row .slick-arrow.slick-prev::before {
+  /* This is the key part for the icon */
+  content: ""; /* We will use a different approach for the angle icon */
+  font-size: 0; /* Remove the FontAwesome pseudo-element content */
+
+  /* Use a background image or an SVG for the arrow icon */
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* Specific arrow icons for prev and next */
+.product_row .slick-arrow.slick-prev::before {
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' class='feather feather-chevron-left'%3E%3Cpolyline points='15 18 9 12 15 6'%3E%3C/polyline%3E%3C/svg%3E")
+    no-repeat center center;
+}
+
+.product_row .slick-arrow.slick-next::before {
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' class='feather feather-chevron-right'%3E%3Cpolyline points='9 18 15 12 9 6'%3E%3C/polyline%3E%3C/svg%3E")
+    no-repeat center center;
+}
+
+.viewAllBtn {
+  padding: 8px 15px !important;
+  background: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.1) !important;
+  border-radius: 30px !important;
+  color: #414141 !important;
+  font-weight: 600;
+  text-transform: capitalize !important;
+  outline: none !important;
+}
+
+.viewAllBtn svg {
+  font-size: 20px;
+}
+
+.productItem {
+  width: 100%;
+  height: auto;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  position: relative;
+}
+
+.productItem .badge {
+  display: inline-block;
+  padding: 7px 10px;
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  z-index: 100;
+}
+
+.productItem .info {
+  padding: 15px;
+}
+
+.productItem .info h4 {
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.info .oldPrice {
+  font-size: 16px !important;
+  font-weight: bold;
+  color: rgba(0, 0, 0, 0.2);
+  text-decoration: line-through;
+}
+
+.info .oldPrice.lg {
+  font-size: 20px;
+}
+
+.info .netPrice.lg {
+  font-size: 20px;
+}
+
+.info .netPrice {
+  font-size: 16px !important;
+  font-weight: bold;
+}
+
+.productItem .actions {
+  position: absolute;
+  top: 20px;
+  right: 10px;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  opacity: 0; /* Add this line */
+  transition: opacity 0.5s ease-in-out; /* Update this line */
+}
+
+.productItem .actions button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 40px !important;
+  height: 40px !important;
+  width: 40px !important;
+  border: 1px solid rgba(0, 0, 0, 0.1) !important;
+  border-radius: 50% !important;
+  background: #fff !important;
+  box-shadow: 0 1px 3px rgba(0 0 0 / 12%), 0 1px 2px rgba(0 0 0 / 24%) !important;
+  transition: all 0s ease-in-out !important;
+}
+
+.productItem .actions button svg {
+  color: #000 !important;
+  opacity: 0.8;
+  pointer-events: none;
+  font-size: 15px;
+}
+
+.productItem .actions button:hover {
+  background: #233a95 !important;
+}
+
+.productItem .actions button:hover svg {
+  color: #fff !important;
+}
+
+.productItem .imgWrapper {
+  overflow: hidden;
+}
+
+.productItem .imgWrapper img {
+  transition: all 0.3s ease-in-out;
+}
+
+.productItem .imgWrapper:hover img {
+  transform: scale(1.1);
+}
+
+.productItem .imgWrapper:hover .actions {
+  opacity: 1; /* Update this line */
+}
+
+/* .product_row .productItem{
+  border-right: 1px solid transparent !important;
+}
+
+.product_row .item:last-child .item .productItem{
+  border: 1px solid rgba(0, 0, 0, 0.1);
+} */
+
+/* .swiper{padding-right: 1px !important;} */
+
+.badge-primary {
+  background: #2bbef9 !important;
+}
+
+.homeCat .item {
+  border: 1px solid #e9e9e9;
+  border-radius: 8px;
+  padding: 30px 10px;
+  position: relative;
+  transition: all 0.2s ease-in-out;
+}
+
+.homeCat .item:hover {
+  border-color: #3bb77e;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  transform: translateY(-5px);
+}
+
+.homeCat .item img {
+  height: auto;
+  width: 100%;
+  max-width: 90px;
+  margin-bottom: 20px;
+}
+
+.homeCat .item h6 {
+  font-size: 16px;
+  font-weight: 700;
+  color: #253d4e;
+  line-height: 1.2;
+}
+
+/*
+  ========================================================================
+  Home Categories Section
+  ========================================================================
+*/
+.home-categories-section {
+  padding: 32px 0;
+  background-color: #f7f7f7;
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.subheading {
+  color: #777;
+  text-transform: uppercase;
+  font-size: 14px;
+}
+
+.main-heading {
+  font-weight: bold;
+  margin-top: 8px;
+  font-size: 32px;
+}
+
+.categories-slider-container {
+  position: relative;
+  max-width: 1200px; /* Adjust this value as needed to match your container */
+  margin: 0 auto;
+  padding: 0 40px; /* Add padding to prevent arrows from being cut off */
+}
+
+/* Style for each category card */
+.category-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 24px 8px;
+  border: 1px solid #e9e9e9;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  min-height: 200px;
+}
+
+.category-item:hover {
+  border-color: #3bb77e;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  transform: translateY(-5px);
+}
+
+.category-image {
+  max-width: 100px;
+  height: auto;
+  margin-bottom: 16px;
+}
+
+.category-name {
+  font-weight: bold;
+  font-size: 16px;
+  color: #253d4e;
+  line-height: 1.2;
+}
+
+/* Swiper Arrows for the Categories */
+.categories-slider-container .swiper-button-next,
+.categories-slider-container .swiper-button-prev {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px !important;
+  height: 40px !important;
+  background: #fff;
+  border-radius: 100%;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  transition: all 0.2s ease-in-out;
+}
+
+.categories-slider-container .swiper-button-next {
+  right: 0px;
+}
+
+.categories-slider-container .swiper-button-prev {
+  left: 0px;
+}
+
+.categories-slider-container .swiper-button-next::after,
+.categories-slider-container .swiper-button-prev::after {
+  content: "";
+  font-size: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.categories-slider-container .swiper-button-prev::after {
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' class='feather feather-chevron-left'%3E%3Cpolyline points='15 18 9 12 15 6'%3E%3C/polyline%3E%3C/svg%3E")
+    no-repeat center center;
+}
+
+.categories-slider-container .swiper-button-next::after {
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' class='feather feather-chevron-right'%3E%3Cpolyline points='9 18 15 12 9 6'%3E%3C/polyline%3E%3C/svg%3E")
+    no-repeat center center;
+}
+
+/*
+  ========================================================================
+  FIXED Beverages Page Styles
+  ========================================================================
+*/
+
+/* Main page container for layout */
+.beverages-page {
+  padding: 40px 0;
+}
+
+/* This is the key container that holds both the sidebar and the main content.
+   Using flexbox here ensures they are next to each other. */
+.beverages-page .row {
+  display: flex;
+}
+
+/*
+  ========================================================================
+  FIXED Filter Sidebar Styles
+  ========================================================================
+*/
+.filter-sidebar {
+  padding-right: 20px;
+  border-right: 1px solid #e0e0e0;
+  min-width: 250px;
+}
+
+/* This is the key change: a class to group and space each filter section. */
+.filter-group {
+  margin-bottom: 25px;
+}
+
+.filter-heading {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+.filter-sidebar ul {
+  list-style: none;
+  padding-left: 0;
+  margin-bottom: 15px;
+}
+
+.filter-sidebar li a {
+  text-transform: capitalize;
+  text-decoration: none;
+  color: #555;
+  font-size: 14px;
+  line-height: 2;
+}
+
+/* Add similar styling for other components as needed */
+.price-display {
+  font-weight: 600;
+  margin-top: 10px;
+}
+
+.filter-button {
+  margin-top: 15px;
+  width: 100%;
+  background-color: #4a90e2 !important;
+  color: #fff !important;
+}
+
+.price-display {
+  font-weight: 600;
+  margin-top: 10px;
+}
+
+.filter-button {
+  margin-top: 15px;
+  width: 100%;
+  background-color: #4a90e2 !important;
+  color: #fff !important;
+}
+
+/* Product Grid Styles */
+.product-grid-container {
+  padding-left: 40px; /* Increased padding for better separation from sidebar */
+  flex-grow: 1; /* Allow the product grid to take up remaining space */
+}
+
+.product-grid-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  padding-right: 15px; /* Adjust padding to align with the grid */
+}
+
+.grid-heading {
+  font-size: 28px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.sort-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.sort-text {
+  font-size: 14px;
+  color: #777;
+}
+
+.sort-select .MuiOutlinedInput-notchedOutline {
+  border: none;
+}
+
+/* The core grid layout for the product cards */
+.product-grid {
+  display: grid; /* Using CSS Grid for a more controlled layout */
+  grid-template-columns: repeat(4, 1fr); /* Creates 4 equal columns */
+  gap: 15px; /* Adjust the gap between grid items */
+}
+
+.product-card {
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  overflow: hidden;
+  text-align: center;
+  transition: all 0.2s ease-in-out;
+  display: flex; /* Enable flexbox for internal alignment */
+  flex-direction: column; /* Stack items vertically */
+  justify-content: space-between; /* Distribute space between elements */
+  height: 100%; /* Ensure all cards have the same height */
+}
+
+.product-card:hover {
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transform: translateY(-5px);
+}
+
+.product-image-wrapper {
+  padding: 15px;
+  background-color: #f7f7f7;
+  flex-grow: 1; /* Allow image wrapper to take up available vertical space */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.product-image {
+  width: 100%;
+  max-height: 150px;
+  object-fit: contain;
+}
+
+.product-info {
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.product-name {
+  text-transform: uppercase;
+}
+.product-name {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 0;
+  height: auto; /* Allow name to wrap if needed */
+  text-transform: capitalize;
+}
+
+.product-stock {
+  color: #4a90e2;
+  font-size: 12px;
+  margin-bottom: 0;
+}
+
+.product-rating {
+  margin-bottom: 5px;
+}
+
+.product-price {
+  font-size: 18px;
+  font-weight: bold;
+  color: #233a95;
+  margin-bottom: 10px;
+}
+
+.add-to-cart-btn {
+  background-color: #2bbef9;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  width: 100%; /* Make the button full width within the card */
+}
+
+.add-to-cart-btn:hover {
+  background-color: #1a9bdc;
+}
+
+.no-products-message {
+  text-align: center;
+  width: 100%;
+  margin-top: 50px;
+  color: #888;
+}
+
+.productRow2 {
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.productRow2 .productItem {
+  width: 24%;
+  overflow: hidden;
+  border-right: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.bannerSec {
+  gap: 15px;
+}
+
+.sticky {
+  position: sticky;
+  top: 10px;
+  z-index: 100;
+}
+
+/* Footer.css */
+
+.footer-container {
+  background-color: #233a95; /* Dark blue background */
+  color: #000000; /* Light gray text */
+  font-family: "Arial", sans-serif; /* Example font */
+}
+
+.disclaimer-section {
+  background-color: #fff; /* White background */
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.disclaimer-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem 0;
+  gap: 2rem;
+  font-size: 0.8rem;
+  text-align: center;
+}
+
+.disclaimer-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.disclaimer-item p {
+  margin: 0;
+}
+
+.drink-responsibly {
+  font-weight: bold;
+  color: #d11a2a; /* Red text */
+}
+
+.cgso-text {
+  font-weight: bold;
+  color: #000;
+}
+
+.main-footer-section {
+  padding: 3rem 0;
+}
+
+.main-footer-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+}
+
+.footer-heading {
+  font-size: 1rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  color: #fff;
+}
+
+.footer-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-links li {
+  margin-bottom: 0.5rem;
+}
+
+.footer-links a {
+  color: #f0f0f0;
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+  color: #2bbef9; /* Light blue on hover */
+}
+
+.app-icons,
+.social-icons {
+  display: flex;
+  gap: 1rem;
+  font-size: 1.5rem;
+}
+
+.social-icon {
+  color: #fff;
+  transition: color 0.3s ease;
+}
+
+.social-icon:hover {
+  color: #2bbef9;
+}
+
+.bottom-bar {
+  background-color: #172763; /* Slightly darker blue */
+  padding: 1rem 0;
+  border-top: 1px solid #334483;
+}
+
+.bottom-bar-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.8rem;
+  color: #b0b0b0;
+}
+
+/* Footer PayU Logo Styles */
+.secure-payments {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.secure-payments p {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin: 0;
+}
+
+.payu-logo {
+  height: 20px; /* Set a fixed height to make the image smaller */
+  width: auto; /* Maintain aspect ratio */
+  vertical-align: middle; /* Align the image with the text baseline */
+}
+
+.secure-icon {
+  color: #2bbef9;
+  font-size: 1.2rem;
+}
+
+.bottom-bar-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.8rem;
+  color: #b0b0b0;
+  flex-wrap: wrap; /* Allows icons to wrap on smaller screens */
+}
+
+.payment-icons {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.payment-icon-img {
+  height: 25px; /* Set a fixed height for consistency */
+  width: auto; /* Maintain aspect ratio */
+  object-fit: contain; /* Ensures the full image is visible */
+}
+
+@media (max-width: 768px) {
+  .main-footer-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .bottom-bar-content {
+    flex-direction: column;
+    text-align: center;
+    gap: 1rem;
+  }
+}
+
+.disclaimer-section {
+  width: 100%;
+  height: 100px;
+  margin: auto;
+  background: #fff;
+  padding: 25px 0px;
+}
+
+.disclaimer-section .topInfo {
+  border-bottom: 1px solid rgba(204, 203, 203, 0.2);
+}
+
+.disclaimer-section .topInfo .col {
+  padding: 10px 15px;
+  padding-left: 40px;
+  border-right: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.disclaimer-section .topInfo .col:last-child {
+  border-right: 0px;
+}
+
+.disclaimer-section .topInfo .col svg {
+  font-size: 26px;
+}
+
+.disclaimer-section .topInfo .col span {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.productModal .MuiPaper-elevation {
+  padding: 25px;
+  position: relative;
+  max-width: 900px !important;
+  width: 900px !important;
+}
+
+.productModal h4 {
+  font-size: 20px !important;
+  color: rgba(0, 0, 0, 0.8) !important;
+}
+
+.productZoom {
+  width: 100%;
+  height: auto;
+  padding: 0px;
+  overflow: hidden;
+  border-radius: 15px;
+}
+
+.productZoom .badge {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  z-index: 100;
+}
+
+.zoomSliderBig {
+  width: 100% !important;
+}
+
+.zoomSlider {
+  padding-top: 30px;
+}
+
+.zoomSlider .slick-slide {
+  padding-right: 20px !important;
+}
+
+.zoomSlider * {
+  outline: none !important;
+}
+
+.zoomSlider .item {
+  border: 2px solid transparent !important;
+  overflow: hidden;
+  border-radius: 15px;
+  cursor: pointer;
+}
+
+.zoomSlider .slick-current .item {
+  border: 2px solid #3bb77e !important;
+}
+
+.zoomSlider .slick-arrow {
+  top: 55% !important;
+  zoom: 80% !important;
+}
+
+.zoomSlider .slick-arrow.slick-next {
+  right: -2% !important;
+}
+
+.zoomSlider .slick-arrow.slick-prev {
+  left: -5% !important;
+}
+
+.quantityDrop {
+  width: 150px;
+  gap: 10px;
+}
+
+.quantityDrop button {
+  min-width: 40px !important;
+  width: 40px !important;
+  height: 40px !important;
+  border-radius: 50% !important;
+  background: #edeef5 !important;
+  border: 1px solid rgba(0, 0, 0, 0.1) !important;
+  color: #000;
+}
+
+.quantityDrop button svg {
+  color: #000 !important;
+}
+
+.quantityDrop input {
+  width: 20px;
+  border: 0px;
+  background: transparent;
+  outline: none !important;
+  text-align: center;
+}
+
+.productModal .actions button {
+  color: #000 !important;
+  border: 1px solid rgba(0, 0, 0, 0.1) !important;
+  font-size: 10px !important;
+}
+
+.productModal .actions button:hover {
+  background: #f1f1f1;
+}
+
+.productModal .actions button svg {
+  font-size: 15px !important;
+}
+
+.product_Listing_Page {
+  padding: 45px 0px;
+}
+
+.product_Listing_Page .productListing {
+  gap: 20px;
+}
+
+.product_Listing_Page .productListing .sidebar {
+  width: 20%;
+  flex: 0 0 20%;
+}
+
+/* .product_Listing_Page .productListing .sidebar .sticky{
+  position: sticky;
+  top: 20px;
+} */
+
+.product_Listing_Page .productListing .sidebar .filterBox {
+  margin-bottom: 35px;
+}
+
+.product_Listing_Page .productListing .sidebar .filterBox h6 {
+  font-weight: 700;
+  font-size: 14px;
+  margin-bottom: 15px;
+}
+
+.product_Listing_Page .productListing .sidebar .scroll {
+  padding-left: 10px;
+  max-height: 180px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+.product_Listing_Page .productListing .sidebar .scroll::-webkit-scrollbar {
+  width: 5px !important;
+  height: 5px !important;
+}
+
+.product_Listing_Page .productListing {
+  gap: 20x;
+}
+
+.product_Listing_Page .productListing .sidebar .scroll ul li {
+  list-style: none;
+  margin-bottom: 0px;
+  width: 100%;
+}
+
+.product_Listing_Page .productListing .sidebar .scroll ul {
+  margin-bottom: 0px;
+}
+
+.css-12xagqm-MuiSwitchBase-root {
+  padding: 2px !important;
+}
+
+.css-rizt0-MuiTypography-root {
+  font-size: 13px !important;
+}
+
+.css-1umw9bq-MuiSvgIcon-root {
+  width: 20px !important;
+  height: 20px !important;
+}
+
+.css-vuhw6e-MuiButtonBase-root-MuiSwitchBase-root-MuiCheckbox-root.Mui-checked,
+.css-vuhw6e-MuiButtonBase-root-MuiSwitchBase-root-MuiCheckbox-root.MuiCheckbox-indeterminate {
+  color: #6d4aae !important;
+}
+
+.range-slider {
+  height: 5px !important;
+}
+
+.range-slider .range-slider__thumb,
+.range-slider .range-slider__range {
+  background: #6d4aae !important;
+}
+
+.range-slider .range-slider__thumb {
+  width: 15px !important;
+  height: 15px !important;
+}
+
+
+
+.product_Listing_Page .productListing .content_right {
+  width: 78%;
+  flex: 0 0 78%;
+  padding-left: 50px;
+}
+
+.product_Listing_Page .productListing .content_right .showBy {
+  width: 100%;
+  height: auto;
+  background: #f1f3ff;
+  padding: 15px 25px;
+}
+
+.product_Listing_Page
+  .productListing
+  .content_right
+  .showBy
+  .btnWrapper
+  button {
+  min-width: 30px !important;
+  height: 35px !important;
+  width: 35px !important;
+  border-radius: 50% !important;
+  color: #000;
+}
+
+.product_Listing_Page
+  .productListing
+  .content_right
+  .showBy
+  .btnWrapper
+  button
+  svg {
+  color: #000;
+  font-size: 18px !important;
+  opacity: 0.3;
+}
+
+.product_Listing_Page
+  .productListing
+  .content_right
+  .showBy
+  .btnWrapper
+  button.act svg{
+  opacity: 1 !important;
+  }
+
+.product_Listing_Page
+  .productListing
+  .content_right
+  .showBy
+  .btnWrapper
+  button:hover
+  svg {
+  opacity: 1;
+}
+
+.showByFilter button{
+  min-width: auto !important;
+  color: #000;
+}
+
+.showByFilter button svg{
+  color: #000;
+  opacity: 0.6;
+  margin-left: 5px;
+}
+
+.showByFilter button.act{
+  background: #ccc !important;
+} 
+
+.showByFilter button.act svg{
+  opacity: 1 !important;
+}
+
+
+.showPerPageDropdown .MuiPaper-root{
+  width: 80px !important;
+}
+
+.productListing{
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.productListing .productItem.four{
+  width: 23%;
+}
+
+.productListing .productItem.three{
+  width: 31.5%;
+}
+.productListing .productItem.two{
+  width: 48%;
+}
+
+.productListing .productItem.one{
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+
+.productListing .productItem.one .imgWrapper{
+  width: 30%;
+}
+
+.section{
+  padding: 45px 0px;
+}
+
+.productDetails h2.hd{
+  font-size: 26px;
+}
+
+.productDetails h3.hd{
+  font-size: 18px !important;
+}
+
+
+.productDetails .oldPrice{
+  font-size: 20px;
+  font-weight: bold;
+  color: rgba(0, 0, 0, 0.2);
+  text-decoration: line-through;
+}
+
+.productDetails .netPrice{
+  font-size: 22px;
+}
+
+.productDetails .btn-circle{
+  min-width: 40px !important;
+  width: 40px !important;
+  height: 40px !important;
+  padding: 5px !important;
+  border-radius: 50% !important;
+  border: 1px solid rgba(0, 0, 0, 0.1) !important;
+  font-size: 20px !important;
+  color: #fff !important;
+  background: #edeef5 !important;
+}
+
+.productDetails .btn-circle svg{
+  color: #000 !important;
+  opacity: 0.8;
+  font-size: 18px;
+}
+
+.productDetails .btn-circle:hover{
+  background: #5e5b5b;
+}
+
+.detailsPageTabs{
+  border-radius: 25px !important;
+  background: #fafafa;
+}
+
+.customTabs ul li{
+  margin-right: 10px !important;
+}
+
+.customTabs ul li button{
+  padding: 10px 25px !important;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  font-size: 14px;
+  text-transform: capitalize;
+  border-radius: 30px !important;
+  color: #000 !important;
+}
+
+.customTabs ul li button.active{
+  background: #364580 !important;
+  color: #fff !important;
+}
+
+.reviewsCard{margin-bottom: 25px !important;}
+
+.reviewsCard .image{
+  width: 100px;
+}
+
+.reviewsCard .rounded-circle{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  width: 100px;
+  height: 100px;
+}
+
+.reviewsCard .rounded-circle img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.reviewsCard .info{
+  width: 85%;
+}
+
+.detailsPageTabs .table th, .detailsPageTabs .table td{
+  vertical-align: middle;
+  font-size: 14px;
+}
+
+.detailsPageTabs .table td p{
+  margin-bottom: 0px;
+}
+
+.reviewForm h4{
+  font-size: 20px;
+  margin-bottom: 15px;
+  font-weight: 700;
+}
+
+.reviewForm .form-group{
+  margin-bottom: 25px;
+}
+
+.reviewForm .form-group .form-control{
+  height: 50px;
+  font-size: 16px;
+  border-radius: 7px !important;
+  padding-left: 20px;
+}
+
+.reviewForm .form-group textarea.form-control{
+  height: 200px;
+  padding-top: 25px;
+}
+
+.progressBarBox{
+  margin-bottom: 10px;
+}
+
+.progress-bar{
+  font-size: 16px;
+}
+
+.reviewsCard .info p{
+  font-size: 13px;
+  line-height: 22px;
+}
+
+.cartPage .table thead{
+  background: #ececec !important;
+  overflow: hidden;
+}
+
+.cartPage .table thead th{
+  border: 0px !important;
+}
+
+.cartPage .table thead th:first-child{
+  border-top-left-radius: 10px !important;
+  border-bottom-left-radius: 10px !important;
+}
+
+.cartPage .table thead th:last-child{
+  border-top-right-radius: 10px !important;
+  border-bottom-right-radius: 10px !important;
+}
+
+.cartItemimgWrapper .imgWrapper{
+  width: 100px;
+  overflow: hidden;
+}
+
+.cartItemimgWrapper .info a:hover{
+  text-decoration: none;
+}
+
+.cartItemimgWrapper .info h6{
+  color: #343434;
+}
+
+
+
+
