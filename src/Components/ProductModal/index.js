@@ -8,7 +8,11 @@ import { IoIosHeartEmpty } from "react-icons/io";
 import { MdOutlineCompareArrows } from "react-icons/md";
 import { MyContext } from "../../App";
 import ProductZoom from "../ProductZoom";
+<<<<<<< HEAD
 import {IoCartSharp} from "react-icons/io5";
+=======
+
+>>>>>>> 69f49267fc19917a8762df4e0637fde4cc80b913
 
 
 
@@ -71,10 +75,16 @@ const ProductModal = (props) => {
             <div className="d-flex align-items-center">
               <QuantityBox />
 
+<<<<<<< HEAD
                <Button className="btn-blue bg-red btn-lg btn-big">
                                <IoCartSharp/>
                                ADD TO CART
                              </Button>
+=======
+              <Button className="btn-blue btn-lg btn-big btn-round ml-3">
+                ADD TO CART
+              </Button>
+>>>>>>> 69f49267fc19917a8762df4e0637fde4cc80b913
             </div>
 
             <div className="d-flex align-items-center mt-5 actions">

@@ -10,16 +10,22 @@ import Footer from "./Components/Footer";
 import Listing from "./Pages/Listing";
 import ProductDetails from "./Pages/ProductDetails";
 import Cart from "./Pages/Cart";
+<<<<<<< HEAD
 import SignIn from "./Pages/SignIn";
 import SignUp from "./Pages/SignUp"
+=======
+>>>>>>> 69f49267fc19917a8762df4e0637fde4cc80b913
 
 const MyContext = createContext();
 
 function App() {
   const [cityList, setCityList] = useState([]);
   const [isOpenProductModal, setisOpenProductModal] = useState(false);
+<<<<<<< HEAD
   const [isHeaderFooterShow, setisHeaderFooterShow] = useState(true);
   const [isLogin, setIsLogin] = useState(false);
+=======
+>>>>>>> 69f49267fc19917a8762df4e0637fde4cc80b913
 
   //   const closeProductModal=()=>{
   //   context.setisOpenProductModal(false);
@@ -39,16 +45,21 @@ function App() {
   const values = {
     cityList,
     isOpenProductModal,
+<<<<<<< HEAD
     setisOpenProductModal,
     isHeaderFooterShow,
     setisHeaderFooterShow,
     isLogin,
     setIsLogin
+=======
+     setisOpenProductModal,
+>>>>>>> 69f49267fc19917a8762df4e0637fde4cc80b913
   };
 
   return (
     <BrowserRouter>
       <MyContext.Provider value={values}>
+<<<<<<< HEAD
         {isHeaderFooterShow === true && <Header />}
 
         <Routes>
@@ -67,6 +78,21 @@ function App() {
         
 
         {isOpenProductModal === true && <ProductModal />}
+=======
+        <Header />
+        <Routes>
+          <Route path="/" exact={true} element={<Home />} />
+          <Route path="/cat/:id" exact={true} element={<Listing />} />
+          <Route exact={true} path="/product/:id"  element={<ProductDetails />} />
+          <Route exact={true} path="/cart"  element={<Cart />} />
+        </Routes>
+        <Footer />
+
+         {
+      isOpenProductModal === true && <ProductModal />
+    }
+
+>>>>>>> 69f49267fc19917a8762df4e0637fde4cc80b913
       </MyContext.Provider>
     </BrowserRouter>
   );

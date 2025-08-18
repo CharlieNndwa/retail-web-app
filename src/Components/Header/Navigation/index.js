@@ -125,6 +125,7 @@ const Navigation = () => {
                 </Link>
               </li>
               <li className="list-inline-item">
+<<<<<<< HEAD
                 <Link to="/cat/1">
                   <Button>
                     Shop
@@ -134,6 +135,17 @@ const Navigation = () => {
                   </Button>
 
                   {/* <div className="submenu shadow">
+=======
+                <Link to="/">
+                  <Button>
+                    Shop
+                    <span className="icon2 ml-2">
+                      <FaAngleDown />
+                    </span>
+                  </Button>
+
+                  <div className="submenu shadow">
+>>>>>>> 69f49267fc19917a8762df4e0637fde4cc80b913
                     <Link to="/">
                       <Button>Beverages</Button>
                     </Link>
@@ -152,12 +164,20 @@ const Navigation = () => {
                     <Link to="/home-kitchen">
                       <Button>Home & Kitchen</Button>
                     </Link>
+<<<<<<< HEAD
                   </div> */}
+=======
+                  </div>
+>>>>>>> 69f49267fc19917a8762df4e0637fde4cc80b913
                 </Link>
               </li>
 
               <li className="list-inline-item">
+<<<<<<< HEAD
                 <Link to="/cat/1">
+=======
+                <Link to="/">
+>>>>>>> 69f49267fc19917a8762df4e0637fde4cc80b913
                   <Button>All Products</Button>
                 </Link>
               </li>
@@ -178,7 +198,11 @@ const Navigation = () => {
                 </Link>
               </li>
               <li className="list-inline-item">
+<<<<<<< HEAD
                 <Link to="/cat/1">
+=======
+                <Link to="/">
+>>>>>>> 69f49267fc19917a8762df4e0637fde4cc80b913
                   <Button>
                     Groceries
                     <span className="icon2 ml-2">
@@ -194,7 +218,11 @@ const Navigation = () => {
                 </Link>
               </li>
               <li className="list-inline-item">
+<<<<<<< HEAD
                 <Link to="/contact-us">
+=======
+                <Link to="/">
+>>>>>>> 69f49267fc19917a8762df4e0637fde4cc80b913
                   <Button>Contact</Button>
                 </Link>
               </li>
