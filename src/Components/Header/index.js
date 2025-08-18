@@ -38,29 +38,6 @@ const Header = () => {
                 <SearchBox />
 
                 <div className="part3 d-flex align-items-center ml-auto">
-<<<<<<< HEAD
-                  {context.isLogin !== true ? (
-                    <Link to="/sign-in">
-                      <Button className="btn-blue btn-round mr-3">
-                        Sign In
-                      </Button>
-                    </Link>
-                  ) : (
-                    <Button className="circle mr-3">
-                      <FiUser />
-                    </Button>
-                  )}
-
-                  <div className="ml-auto cartTab d-flex align-items-center">
-                    <span className="price mr-2">R149.99</span>
-                    <div className="position-relative ml-2">
-                      <Link to="/cart">
-                        <Button className="circle ">
-                          <IoBagOutline />
-                        </Button>
-                      </Link>
-
-=======
                   <Button className="circle mr-3">
                     <FiUser />
                   </Button>
@@ -70,7 +47,6 @@ const Header = () => {
                       <Button className="circle ">
                         <IoBagOutline />
                       </Button>
->>>>>>> 69f49267fc19917a8762df4e0637fde4cc80b913
                       <span className="count d-flex align-items-center justify-content-center">
                         1
                       </span>
@@ -88,8 +64,4 @@ const Header = () => {
   );
 };
 
-<<<<<<< HEAD
 export default Header;
-=======
-export default Header;
->>>>>>> 69f49267fc19917a8762df4e0637fde4cc80b913
