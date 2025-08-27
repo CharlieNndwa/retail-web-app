@@ -26,31 +26,6 @@ const Footer = () => {
       className="footer-container"
     >
     
-       <div className="disclaimer-section">
-               <div className="container">
-            <div className="topInfo  row">
-                <div className="col d-flex align-items-center">
-                    <span><GiFruitBowl/></span>
-                    <span className="ml-2">Everyday fresh products</span>
-                </div>
-
-                <div className="col d-flex align-items-center">
-                    <span><TbTruckDelivery/></span>
-                    <span className="ml-2">Free delivery for orders over R750</span>
-                </div>
-
-                <div className="col d-flex align-items-center">
-                    <span><MdDiscount/></span>
-                    <span className="ml-2">Daily Mega Discounts</span>
-                </div>
-
-                <div className="col d-flex align-items-center">
-                    <span><CiBadgeDollar/></span>
-                    <span className="ml-2">Best price on the market</span>
-                </div>
-            </div>
-        </div>
-      </div> 
 
 
  
@@ -64,16 +39,14 @@ const Footer = () => {
             <h4 className="footer-heading">HELP CENTER</h4>
             <ul className="footer-links">
               <li>
-                <a href="#">Contact Us</a>
+                <a href="/contact-us">Contact Us</a>
+              </li>
+             
+              <li>
+                <a href="/queries">Frequently Asked Questions</a>
               </li>
               <li>
-                <a href="#">Store Finder</a>
-              </li>
-              <li>
-                <a href="#">Frequently Asked Questions</a>
-              </li>
-              <li>
-                <a href="#">Payments</a>
+                <a href="/payments">Payments</a>
               </li>
             </ul>
           </div>
@@ -83,13 +56,13 @@ const Footer = () => {
             <h4 className="footer-heading">POLICY</h4>
             <ul className="footer-links">
               <li>
-                <a href="#">Returns Policy</a>
+                <a href="/refund-returns">Returns Policy</a>
               </li>
               <li>
-                <a href="#">Terms & Conditions</a>
+                <a href="/terms-and-conditions">Terms & Conditions</a>
               </li>
               <li>
-                <a href="#">Privacy Policy</a>
+                <a href="/privacy-policy">Privacy Policy</a>
               </li>
             </ul>
           </div>
@@ -98,17 +71,15 @@ const Footer = () => {
           <div className="footer-column">
             <h4 className="footer-heading">ABOUT</h4>
             <ul className="footer-links">
+               <li>
+                <a href="/about-us">About Us</a>
+              </li>
+            
               <li>
-                <a href="#">Sell ON NNDWA & CO</a>
+                <a href="/careers">Careers</a>
               </li>
               <li>
-                <a href="#">Retailer Business</a>
-              </li>
-              <li>
-                <a href="#">Careers</a>
-              </li>
-              <li>
-                <a href="#">Competitions</a>
+                <a href="/competitions">Competitions</a>
               </li>
             </ul>
           </div>

@@ -1,50 +1,70 @@
+// src/Components/ProductModal.js
+
+import React, { useState, useContext } from 'react'; // Import useState
 import Dialog from "@mui/material/Dialog";
 import { MdClose } from "react-icons/md";
 import Button from "@mui/material/Button";
 import Rating from "@mui/material/Rating";
-import {  useContext } from "react";
 import QuantityBox from "../QuantityBox";
 import { IoIosHeartEmpty } from "react-icons/io";
 import { MdOutlineCompareArrows } from "react-icons/md";
 import { MyContext } from "../../App";
 import ProductZoom from "../ProductZoom";
-<<<<<<< HEAD
-import {IoCartSharp} from "react-icons/io5";
-=======
+import { IoCartSharp } from "react-icons/io5";
+import toast from 'react-hot-toast';
 
->>>>>>> 69f49267fc19917a8762df4e0637fde4cc80b913
-
-
-
-const ProductModal = (props) => {
- 
-
+const ProductModal = () => {
   const context = useContext(MyContext);
+  const { productModalData, setisOpenProductModal, addToCart } = context;
 
+  // 1. Add state for the product quantity
+  const [quantity, setQuantity] = useState(1);
+
+  // Render nothing if no product data is available
+  if (!productModalData || Object.keys(productModalData).length === 0) {
+    return null;
+  }
+
+  const { name, brand, rating, oldPrice, price, description, images } = productModalData;
+
+  // 2. Create the handler for quantity changes
+  const onQuantityChange = (newQuantity) => {
+    setQuantity(newQuantity);
+  };
+
+  // 3. Update the Add to Cart handler to pass the current quantity
+  const handleAddToCart = () => {
+    addToCart(productModalData, quantity);
+
+    toast.success(`${name} has been added to cart!`, {
+      duration: 2000,
+    });
+  };
+
+  const totalPrice = price * quantity;
 
   return (
     <>
       <Dialog
         open={true}
         className="productModal"
-        onClose={() => context.setisOpenProductModal(false)}
+        onClose={() => setisOpenProductModal(false)}
       >
-        <Button className="closeBtn" onClick={() => context.setisOpenProductModal(false)}>
+        <Button className="closeBtn" onClick={() => setisOpenProductModal(false)}>
           <MdClose />
         </Button>
 
-        <h4 className="mb-1 font-weight-bold">Jacobs Kronung Coffee 200g</h4>
+        <h4 className="mb-1 font-weight-bold">{name}</h4>
         <div className="d-flex align-items-center">
           <div className="d-flex align-items-center mr-4">
             <span>Brands:</span>
             <span className="ml-2">
-              <b>Jacob Kronung</b>
+              <b>{brand}</b>
             </span>
           </div>
-
           <Rating
             name="read-only"
-            value={5}
+            value={rating}
             size="small"
             precision={0.5}
             readOnly
@@ -55,36 +75,29 @@ const ProductModal = (props) => {
 
         <div className="row mt-2 productDetailModal">
           <div className="col-md-5">
-            <ProductZoom/>
+            <ProductZoom images={images} />
           </div>
 
           <div className="col-md-7">
             <div className="d-flex info align-items-center mb-3">
-              <span className="oldPrice lg mr-2">R162.99</span>
-              <span className="netPrice text-danger lg">R146.99</span>
+              <span className="oldPrice lg mr-2">R{oldPrice.toFixed(2)}</span>
+              <span className="netPrice text-danger lg">R{totalPrice.toFixed(2)}</span>
             </div>
 
             <span className="badge bg-success">IN STOCK</span>
 
-            <p className="mt-3">
-              Jacobs Kronung Instant Coffee is rich, easy-drinking coffee to
-              enjoy any time of the day, available in a variety of refill pack
-              sizes for your convenience.
-            </p>
+            <p className="mt-3">{description}</p>
 
             <div className="d-flex align-items-center">
-              <QuantityBox />
+              {/* 4. Pass the quantity and the onQuantityChange handler to QuantityBox */}
+              <QuantityBox quantity={quantity} onQuantityChange={onQuantityChange} />
 
-<<<<<<< HEAD
-               <Button className="btn-blue bg-red btn-lg btn-big">
-                               <IoCartSharp/>
-                               ADD TO CART
-                             </Button>
-=======
-              <Button className="btn-blue btn-lg btn-big btn-round ml-3">
-                ADD TO CART
+              <Button
+                className="btn-blue bg-red btn-lg btn-big"
+                onClick={handleAddToCart}
+              >
+                <IoCartSharp /> ADD TO CART
               </Button>
->>>>>>> 69f49267fc19917a8762df4e0637fde4cc80b913
             </div>
 
             <div className="d-flex align-items-center mt-5 actions">

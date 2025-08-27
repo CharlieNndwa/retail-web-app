@@ -1,186 +1,148 @@
+// src/components/Navigation/Navigation.js
+
 import Button from "@mui/material/Button";
 import { IoIosMenu } from "react-icons/io";
 import { FaAngleDown } from "react-icons/fa";
-import { Link } from "react-router-dom";
-import { useState } from "react";
-import { FaAngleRight } from "react-icons/fa6";
+import { Link, useLocation } from "react-router-dom";
+import { useState, useEffect, useRef } from "react";
+import { PRODUCTS } from "../../data/productsData";
 
-const Navigation = () => {
-  const [isopenSidebarVal, setisopenSidebarVal] = useState(false);
+const slugify = (str) =>
+  str
+    .toLowerCase()
+    .replace(/,/g, "")
+    .replace(/&/g, "and")
+    .replace(/\s+/g, "-")
+    .replace(/-+/g, "-")
+    .trim();
 
-  return (
-    <nav>
-      <div className="container">
-        <div className="row">
-          <div className="col-sm-2 navPart1">
-            <div className="catWrapper">
-              <Button
-                className="allCatTab align-items-center"
-                onClick={() => setisopenSidebarVal(!isopenSidebarVal)}
-              >
-                <span className="icon1 mr-2">
-                  <IoIosMenu />
-                </span>
-                <span className="text">All Categories</span>
-                <span className="icon2 ml-2">
-                  <FaAngleDown />
-                </span>
-              </Button>
+const navData = [
+  {
+    name: "Groceries",
+    path: "/products/groceries",
+    subMenu: [
+      { name: "Rice & Pasta", path: "/products/rice-pasta" },
+      { name: "Cereal & Breakfast", path: "/products/cereal-breakfast" },
+    ],
+  },
+  {
+    name: "Beverages",
+    path: "/products/beverages",
+    subMenu: [
+      { name: "Soft Drinks", path: "/products/soft-drinks" },
+      { name: "Energy Drinks", path: "/products/energy-drinks" },
+    ],
+  },
+  { name: "Snacks & Treats", path: "/products/snacks-treats" },
+  { name: "Home & Kitchen", path: "/products/home-kitchen" },
+  { name: "Personal Care", path: "/products/personal-care" },
+  { name: "Baby Care", path: "/products/baby-care" },
+  { name: "Alcohol", path: "/products/alcohol" },
+  { name: "Food Cupboard", path: "/products/food-cupboard" },
+  { name: "Pet Care", path: "/products/pet-care" },
+  { name: "Tea, Coffee & Hot Drinks", path: "/products/tea-coffee-hot-drinks" },
+];
 
-              <div
-                className={`sidebarNav ${
-                  isopenSidebarVal === true ? "open" : ""
-                }`}
-              >
-                <ul>
-                  <li>
-                    <Link to="/groceries">
-                      <Button>
-                        Food essentials <FaAngleRight className="ml-auto" />
-                      </Button>
-                    </Link>
-                    <div className="submenu">
-                      <Link to="/">
-                        <Button>Grains, Rice & Pasta</Button>
-                      </Link>
-                      <Link to="/appliances">
-                        <Button>Meat & Poultry</Button>
-                      </Link>
-                      <Link to="/personal-care">
-                        <Button>Salt,Herbs & Spices</Button>
-                      </Link>
-                      <Link to="/groceries">
-                        <Button>Soup,Gravy & Stock</Button>
-                      </Link>
-                      <Link to="/electronics">
-                        <Button>Cans,Jars & Packaged food</Button>
-                      </Link>
-                      <Link to="/home-kitchen">
-                        <Button>Oil & Vinegar</Button>
-                      </Link>
-                    </div>
-                  </li>
-                  <li>
-                    <Link to="/shop/beverages">
-                      <Button>Beverages <FaAngleRight className="ml-auto" /></Button>
-                    </Link>
-                    <div className="submenu">
-                      <Link to="/">
-                        <Button>Cold Drinks</Button>
-                      </Link>
-                      <Link to="/appliances">
-                        <Button>Sports & Energy Drinks</Button>
-                      </Link>
-                      <Link to="/personal-care">
-                        <Button>Fruit Juices</Button>
-                      </Link>
-                      <Link to="/groceries">
-                        <Button>Water</Button>
-                      </Link>
-                      <Link to="/electronics">
-                        <Button>Cordials & Squashes</Button>
-                      </Link>
-                    </div>
-                  </li>
-                  <li>
-                    <Link to="/health-beauty">
-                      <Button>Health & Beauty <FaAngleRight className="ml-auto" /></Button>
-                    </Link>
-                  </li>
-                  <li>
-                    <Link to="/alcohol">
-                      <Button>Alcohol <FaAngleRight className="ml-auto" /></Button>
-                    </Link>
-                  </li>
-                  <li>
-                    <Link to="/electronics">
-                      <Button>Electronics <FaAngleRight className="ml-auto" /></Button>
-                    </Link>
-                  </li>
-                  <li>
-                    <Link to="/home-kitchen">
-                      <Button>Home & Kitchen <FaAngleRight className="ml-auto" /></Button>
-                    </Link>
-                  </li>
-                  <li>
-                    <Link to="/pet-care">
-                      <Button>Pet care</Button>
-                    </Link>
-                  </li>
-                  <li>
-                    <Link to="/appliances">
-                      <Button>Appliances <FaAngleRight className="ml-auto" /></Button>
-                    </Link>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
+const Navigation = ({ mobileNavOpen, closeMobileNav }) => {
+  const sidebarRef = useRef(null);
+  const location = useLocation();
 
-          <div className="col-sm-10 navPart2 d-flex align-items-center">
-            <ul className="list list-inline ml-auto">
-              <li className="list-inline-item">
-                <Link to="/">
-                  <Button>Home</Button>
-                </Link>
-              </li>
-              <li className="list-inline-item">
-                <Link to="/cat/1">
-                  <Button>
-                    Shop
-                  </Button>
-                </Link>
-              </li>
+  useEffect(() => {
+    // This effect runs whenever the sidebar is open
+    if (mobileNavOpen) {
+      const handleClickOutside = (event) => {
+        // Check if the click is outside the sidebar AND not on the hamburger button
+        if (sidebarRef.current && !sidebarRef.current.contains(event.target)) {
+          // You need to add a check for the hamburger menu button here to prevent it from immediately closing the sidebar after opening it
+          // A simple way to do this is to check if the clicked element is part of the hamburger button
+          // This can be done with a class name or a specific data attribute
+          const isHamburgerButton = event.target.closest('.mobileHamburger');
+          if (!isHamburgerButton) {
+            closeMobileNav();
+          }
+        }
+      };
 
-              <li className="list-inline-item">
-                <Link to="/">
-                  <Button>All Products</Button>
-                </Link>
-              </li>
-              <li className="list-inline-item">
-                <Link to="/">
-                  <Button>
-                    Alcohol{" "}
-                    <span className="icon2 ml-2">
-                      <FaAngleDown />
-                    </span>
-                  </Button>
-                  <div className="submenu shadow">
-                    <Link to="/"><Button>View All</Button></Link>
-                    <Link to="/"><Button>Beer & cider</Button></Link>
-                    <Link to="/"><Button>Wine</Button></Link>
-                    <Link to="/"><Button>Spirit</Button></Link>
-                  </div>
-                </Link>
-              </li>
-              <li className="list-inline-item">
-                <Link to="/">
-                  <Button>
-                    Groceries
-                    <span className="icon2 ml-2">
-                      <FaAngleDown />
-                    </span>
-                  </Button>
-                  <div className="submenu shadow">
-                    <Link to="/"><Button>Cooking</Button></Link>
-                    <Link to="/"><Button>Cereals</Button></Link>
-                    <Link to="/"><Button>Beverages</Button></Link>
-                    <Link to="/"><Button>Sauces & Spreads</Button></Link>
-                  </div>
-                </Link>
-              </li>
-              <li className="list-inline-item">
-                
-                <Link to="/">
-                  <Button>Contact</Button>
-                </Link>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </nav>
-  );
+      // Add the event listener to the document
+      document.addEventListener("mousedown", handleClickOutside);
+      document.addEventListener("touchstart", handleClickOutside); // For mobile touch events
+
+      // Clean up the event listener when the component unmounts or the sidebar closes
+      return () => {
+        document.removeEventListener("mousedown", handleClickOutside);
+        document.removeEventListener("touchstart", handleClickOutside);
+      };
+    }
+  }, [mobileNavOpen, closeMobileNav]);
+
+  return (
+    <nav className="main-nav">
+      <div className="container">
+        <div className={`nav-items-wrapper ${window.innerWidth <= 768 ? "d-none" : ""}`}>
+          <ul className="main-nav-list">
+            <li className="main-nav-item">
+              <Link to="/" className="main-nav-link">
+                <span>Home</span>
+              </Link>
+            </li>
+            <li className="main-nav-item">
+              <Link to="/products/allproducts" className="main-nav-link">
+                <span>All Products</span>
+              </Link>
+            </li>
+            <li className="main-nav-item">
+              <Link to="/products/appliances" className="main-nav-link">
+                <span>Appliances</span>
+              </Link>
+            </li>
+            <li className="main-nav-item">
+              <Link to="/products/home-and-kitchen" className="main-nav-link">
+                <span>Home & Kitchen</span>
+              </Link>
+            </li>
+            <li className="main-nav-item">
+              <Link to="/products/electronics" className="main-nav-link">
+                <span>Electronics</span>
+              </Link>
+            </li>
+            <li className="main-nav-item">
+              <Link to="/products/groceries" className="main-nav-link">
+                <span>Grocery Picks</span>
+              </Link>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      {/* Mobile Sidebar/Menu */}
+      <div ref={sidebarRef} className={`mobile-sidebar ${mobileNavOpen ? "open" : ""}`}>
+        <ul className="mobile-menu-list">
+          <li>
+            <Link to="/" onClick={closeMobileNav}>Home</Link>
+          </li>
+          <li>
+            <Link to="/products/allproducts" onClick={closeMobileNav}>All Products</Link>
+          </li>
+          {navData.map((category, index) => (
+            <li key={index}>
+              <Link to={category.path} onClick={closeMobileNav}>
+                {category.name}
+              </Link>
+              {category.subMenu && (
+                <ul className="mobile-submenu">
+                  {category.subMenu.map((sub, subIndex) => (
+                    <li key={subIndex}>
+                      <Link to={sub.path} onClick={closeMobileNav}>{sub.name}</Link>
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </li>
+          ))}
+        </ul>
+      </div>
+    </nav>
+  );
 };
 
 export default Navigation;

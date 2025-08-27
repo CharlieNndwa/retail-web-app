@@ -1,64 +1,153 @@
-import Rating from "@mui/material/Rating";
-import { BsArrowsFullscreen } from "react-icons/bs";
-import Button from "@mui/material/Button";
-import { IoMdHeartEmpty } from "react-icons/io";
+// src/Components/ProductItem.js
 
-import {  useContext } from "react";
+import React, { useContext, useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import { Button, Rating } from "@mui/material";
+import { BsArrowsFullscreen, BsCart4 } from "react-icons/bs";
+import { IoMdHeartEmpty, IoMdHeart } from "react-icons/io";
+import toast from 'react-hot-toast';
 import { MyContext } from "../../App";
+import axios from 'axios';
 
 const ProductItem = (props) => {
+    const context = useContext(MyContext);
+    const { product, itemView } = props;
+    const [isWishlisted, setIsWishlisted] = useState(false);
 
-  const context = useContext(MyContext)
+    useEffect(() => {
+        if (context.isLogin && context.userWishlist) {
+            const isItemInWishlist = context.userWishlist.some(item => item.productId?._id === product._id);
+            setIsWishlisted(isItemInWishlist);
+        }
+    }, [context.userWishlist, context.isLogin, product._id]);
 
-  const viewProductDetails = (id) => {
-    context.setisOpenProductModal(true);
-  }
+    const handleWishlistClick = async (productId) => {
+        if (!context.isLogin) {
+            toast.error("Please sign in to add to your wishlist.");
+            return;
+        }
 
+        const token = localStorage.getItem('token');
+        try {
+            const response = await axios.post(
+                `http://localhost:8080/api/wishlist/add`,
+                { productId },
+                {
+                    headers: {
+                        Authorization: `Bearer ${token}`,
+                    },
+                }
+            );
+            toast.success(response.data.message);
+            context.fetchUserWishlist();
+        } catch (error) {
+            if (error.response && error.response.status === 409) {
+                toast.error("Product already in wishlist.");
+            } else {
+                console.error("Error adding to wishlist:", error);
+                toast.error("Failed to add to wishlist.");
+            }
+        }
+    };
+    
+    const removeFromWishlist = async (productId) => {
+        const token = localStorage.getItem('token');
+        try {
+            const response = await axios.delete(
+                `http://localhost:8080/api/wishlist/remove/${productId}`,
+                {
+                    headers: {
+                        Authorization: `Bearer ${token}`,
+                    },
+                }
+            );
+            toast.success(response.data.message);
+            context.fetchUserWishlist();
+        } catch (error) {
+            console.error("Error removing from wishlist:", error);
+            toast.error("Failed to remove from wishlist.");
+        }
+    };
 
+    if (!product) {
+        return null;
+    }
 
-  return (
-   <>
-     <div className={`productItem ${props.itemView}`}>
-      <div className="imgWrapper">
-        <img
-          src="https://googro.co.za/cdn/shop/files/mqaCO4gc-LLBH0ymrfoe2YcDl0P0ak0C2qd4Iv502mM.jpg?v=1704628909&width=533"
-          className="w-100"
-          alt="Best seller product"
-        />
+    const viewProductDetails = (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        context.setisOpenProductModal(true);
+        context.setProductModalData(product);
+    };
 
-        <span className="badge badge-primary">28%</span>
+    const handleAddToCart = (e) => {
+        e.preventDefault();
+        e.stopPropagation();
 
-        <div className="actions">
-          <Button onClick={() => viewProductDetails(1)}><BsArrowsFullscreen/></Button>
-          <Button><IoMdHeartEmpty style={{fontSize: '20px'}}/></Button>
-        </div>
-      </div>
+        if (product.inStock) {
+            if (context.addToCart) {
+                context.addToCart(product);
+                toast.success(`${product.name} has been added to cart!`, {
+                    duration: 2000,
+                });
+            } else {
+                toast.error("Cart functionality is not available.");
+            }
+        } else {
+            toast.error("This product is out of stock.");
+        }
+    };
 
-      <div className="info">
-        <h4>Jacobs Kronung Coffee 200g</h4>
-        <span className="text-success d-block">In Stock</span>
-        <Rating
-          className="mt-2 mb-2"
-          name="read-only"
-          value={5}
-          readOnly
-          size="small"
-          precision={0.5}
-        />
-
-        <div className="d-flex">
-          <span className="oldPrice">R162.99</span>
-          <span className="netPrice text-danger ml-2">R146.99</span>
-        </div>
-      </div>
-    </div>
-
-   
-
-
-    {/* <ProductModal/> */}
-   </>
-  );
+    return (
+        <article className={`customProductCard ${itemView === 'one' ? 'list-view' : ''}`}>
+            <Link to={`/product/${product._id}`} className="card-link">
+                <div className="productImageContainer">
+                    <img
+                        src={product.images[0]}
+                        className="w-100"
+                        alt={product.name}
+                    />
+                    <span className="saleBadge">28% OFF</span>
+                    <div className="card-actions-top">
+                        <Button onClick={viewProductDetails}>
+                            <BsArrowsFullscreen />
+                        </Button>
+                        <Button onClick={(e) => { e.stopPropagation(); isWishlisted ? removeFromWishlist(product._id) : handleWishlistClick(product._id); }}>
+                            {isWishlisted ? <IoMdHeart /> : <IoMdHeartEmpty />}
+                        </Button>
+                    </div>
+                </div>
+                <div className="productDetails">
+                    <h4 className="productTitle">{product.name}</h4>
+                    <span className={`text-sm font-semibold ${product.inStock ? 'text-success' : 'text-danger'}`}>
+                        {product.inStock ? "In Stock" : "Out of Stock"}
+                    </span>
+                    <div className="productRating">
+                        <Rating
+                            name="read-only"
+                            value={product.rating}
+                            readOnly
+                            size="small"
+                            precision={0.5}
+                        />
+                    </div>
+                    <div className="productPricing">
+                        <span className="oldPrice">R{product.oldPrice.toFixed(2)}</span>
+                        <span className="netPrice">R{product.price.toFixed(2)}</span>
+                    </div>
+                </div>
+            </Link>
+            <div className="addToCartContainer">
+                <Button
+                    className={`addToCartButton ${!product.inStock && 'opacity-50 cursor-not-allowed'}`}
+                    onClick={handleAddToCart}
+                    disabled={!product.inStock}
+                >
+                    <BsCart4 /> ADD TO CART
+                </Button>
+            </div>
+        </article>
+    );
 };
 
 export default ProductItem;

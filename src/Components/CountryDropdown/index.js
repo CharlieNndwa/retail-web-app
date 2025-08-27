@@ -1,92 +1,67 @@
-import React from "react";
-import Button from "@mui/material/Button";
-import { FaAngleDown } from "react-icons/fa6";
-import Dialog from "@mui/material/Dialog";
-import { IoIosSearch } from "react-icons/io";
-import { MdClose } from "react-icons/md";
-import { useState, useContext } from "react";
-import Slide from "@mui/material/Slide";
+import React, { useState, useEffect, useContext } from "react";
 import { MyContext } from "../../App";
-
-const Transition = React.forwardRef(function Transition(props, ref) {
-  return <Slide direction="up" ref={ref} {...props} />;
-});
+import { MdOutlineMyLocation } from "react-icons/md"; // Use this icon as per your request
 
 const CountryDropdown = () => {
-  const [selectedTab, setSelectedTab] = useState(null);
-  const [selectedCity, setSelectedCity] = useState("Select Location"); // Default city
-  const [isOpenModal, setIsOpenModal] = useState(false);
-  const [search, setSearch] = useState("");
-  const context = useContext(MyContext);
+    const context = useContext(MyContext);
+    const [locationText, setLocationText] = useState("");
+    const [postalCode, setPostalCode] = useState("");
 
-  // Filter cities based on search input
-  const filteredCities = context.cityList?.filter(city =>
-    city.toLowerCase().includes(search.toLowerCase())
-  );
+    useEffect(() => {
+        if (context.isLogin) {
+            // When logged in, get and display the user's location
+            if ("geolocation" in navigator) {
+                navigator.geolocation.getCurrentPosition(
+                    async (position) => {
+                        const lat = position.coords.latitude;
+                        const lon = position.coords.longitude;
 
-  const selectCity = (index) => {
-    setSelectedTab(index);
-    setSelectedCity(filteredCities[index]); // Set selected city
-    setIsOpenModal(false);
-  };
+                        try {
+                            const response = await fetch(
+                                `https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat=${lat}&lon=${lon}`
+                            );
+                            const data = await response.json();
+                            const userCity = data.address.city || data.address.town || data.address.village || "Unknown Location";
+                            const userPostalCode = data.address.postcode || "";
 
-  return (
-    <>
-      <Button className="countryDrop" onClick={() => setIsOpenModal(true)}>
-        <div className="info d-flex flex-column">
-          <span className="label">Your Location</span>
-          <span className="name">{selectedCity}</span>
+                            setLocationText(userCity);
+                            setPostalCode(userPostalCode);
+                        } catch (error) {
+                            console.error("Error fetching location:", error);
+                            setLocationText("Location Error");
+                            setPostalCode("");
+                        }
+                    },
+                    (error) => {
+                        console.error("Geolocation access denied:", error);
+                        setLocationText("Location Disabled");
+                        setPostalCode("");
+                    }
+                );
+            } else {
+                setLocationText("Geo. Not Supported");
+                setPostalCode("");
+            }
+        } else {
+            // When logged out, reset to empty state
+            setLocationText("");
+            setPostalCode("");
+        }
+    }, [context.isLogin]);
+
+    const locationClass = context.isLogin ? "text-green-500" : "text-red-500";
+
+    return (
+        <div className="flex items-center space-x-2">
+            <MdOutlineMyLocation className={`text-xl ${locationClass}`} />
+            {context.isLogin && locationText && (
+                <div className="flex items-center space-x-1">
+                    <span className="font-semibold text-sm mr-2">{locationText},</span>
+                    <span className="text-gray-500 text-xs">{postalCode}</span>
+                </div>
+            )}
         </div>
-        <span className="ml-auto">
-          <FaAngleDown />
-        </span>
-      </Button>
-
-      <Dialog
-        open={isOpenModal}
-        onClose={() => setIsOpenModal(false)}
-        className="locationModal"
-        slots={{
-          transition: Transition,
-        }}
-      >
-        <h4 className="mb-0">Choose your Delivery Location:</h4>
-        <p>Enter your address and we will specify the offer for your area.</p>
-        <Button className="closeBtn" onClick={() => setIsOpenModal(false)}>
-          <MdClose />
-        </Button>
-
-        <div className="headerSearch w-100">
-          <input
-            type="text"
-            placeholder="Search your area"
-            value={search}
-            onChange={e => setSearch(e.target.value)}
-          />
-          <Button>
-            <IoIosSearch />
-          </Button>
-        </div>
-
-        <ul className="locationList mt-3">
-          {filteredCities?.length > 0 ? (
-            filteredCities.map((city, index) => (
-              <li key={index}>
-                <Button
-                  onClick={() => selectCity(index)}
-                  className={`${selectedTab === index ? "active" : ""}`}
-                >
-                  {city}
-                </Button>
-              </li>
-            ))
-          ) : (
-            <li>No cities found.</li>
-          )}
-        </ul>
-      </Dialog>
-    </>
-  );
+    );
 };
 
 export default CountryDropdown;

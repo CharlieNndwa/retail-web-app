@@ -1,198 +1,145 @@
-import FormGroup from "@mui/material/FormGroup";
-import FormControlLabel from "@mui/material/FormControlLabel";
-import Checkbox from "@mui/material/Checkbox";
+// src/Components/Sidebar.js
+
+import React, { useState } from "react";
 import RangeSlider from "react-range-slider-input";
 import "react-range-slider-input/dist/style.css";
-import { useState } from "react";
+import { GoChevronDown, GoChevronUp } from "react-icons/go";
 import { Link } from "react-router-dom";
 
-const Sidebar = () => {
-  const [value, setValue] = useState([100, 60000]);
-  const [value2, setValue2] = useState(0);
+const slugify = (str) =>
+  str
+    .toLowerCase()
+    .replace(/,/g, "")
+    .replace(/&/g, "and")
+    .replace(/\s+/g, "-")
+    .replace(/-+/g, "-")
+    .trim();
+
+const Sidebar = ({ selectedCategory, onPriceChange, priceRange, inStockOnly, showOutOfStock, onInStockChange, onOutOfStockChange, handleReset, categoryCounts, inStockCount, outOfStockCount }) => {
+  const [isCategoryDropdownOpen, setIsCategoryDropdownOpen] = useState(true);
+  
+  // No need for a useEffect to calculate these in the sidebar anymore
+  const dynamicCategories = Object.keys(categoryCounts);
+
+  const toggleCategoryDropdown = () => {
+    setIsCategoryDropdownOpen(!isCategoryDropdownOpen);
+  };
 
   return (
-    <>
-      <div className="sidebar">
-        <div className="sticky">
-          <div className="filterBox">
-            <h6>PRODUCT CATEGORIES</h6>
-
-            <div className="scroll">
-              <ul>
-                <li>
-                  <FormControlLabel
-                    className="w-100"
-                    control={<Checkbox />}
-                    label="Beverages"
-                  />
-                </li>
-                <li>
-                  <FormControlLabel
-                    className="w-100"
-                    control={<Checkbox />}
-                    label="Biscuits & Snacks"
-                  />
-                </li>
-                <li>
-                  <FormControlLabel
-                    className="w-100"
-                    control={<Checkbox />}
-                    label="Breads & Bakery"
-                  />
-                </li>
-                <li>
-                  <FormControlLabel
-                    className="w-100"
-                    control={<Checkbox />}
-                    label="Breakfast & Dairy"
-                  />
-                </li>
-                <li>
-                  <FormControlLabel
-                    className="w-100"
-                    control={<Checkbox />}
-                    label="Frozen Foods"
-                  />
-                </li>
-                <li>
-                  <FormControlLabel
-                    className="w-100"
-                    control={<Checkbox />}
-                    label="Fruits & Vegetables"
-                  />
-                </li>
-                <li>
-                  <FormControlLabel
-                    className="w-100"
-                    control={<Checkbox />}
-                    label="Meats & Seafood"
-                  />
-                </li>
-                <li>
-                  <FormControlLabel
-                    className="w-100"
-                    control={<Checkbox />}
-                    label="Household Appliances"
-                  />
-                </li>
-                <li>
-                  <FormControlLabel
-                    className="w-100"
-                    control={<Checkbox />}
-                    label="Liquor"
-                  />
-                </li>
-              </ul>
-            </div>
-          </div>
-
-          <div className="filterBox">
-            <h6>FILTER BY PRICE</h6>
-
-            <RangeSlider
-              value={value}
-              onInput={setValue}
-              min={100}
-              max={60000}
-              step={5}
-            />
-
-            <div className="d-flex pt-2 pb-2 priceRange">
-              <span>
-                From: <strong className="text-dark">Rs: {value[0]}</strong>
-              </span>
-              <span className="ml-auto text-dark">
-                <strong>Rs: {value[1]}</strong>
-              </span>
-            </div>
-          </div>
-
-          <div className="filterBox">
-            <h6>AVAILABILITY</h6>
-
-            <div className="scroll">
-              <ul>
-                <li>
-                  <FormControlLabel
-                    className="w-100"
-                    control={<Checkbox />}
-                    label="In Stock"
-                  />
-                </li>
-                <li>
-                  <FormControlLabel
-                    className="w-100"
-                    control={<Checkbox />}
-                    label="On Sale"
-                  />
-                </li>
-              </ul>
-            </div>
-          </div>
-
-          <div className="filterBox">
-            <h6>BRANDS</h6>
-
-            <div className="scroll">
-              <ul>
-                <li>
-                  <FormControlLabel
-                    className="w-100"
-                    control={<Checkbox />}
-                    label="COCA COLA"
-                  />
-                </li>
-                <li>
-                  <FormControlLabel
-                    className="w-100"
-                    control={<Checkbox />}
-                    label="ENERGADE"
-                  />
-                </li>
-                <li>
-                  <FormControlLabel
-                    className="w-100"
-                    control={<Checkbox />}
-                    label="OREOS"
-                  />
-                </li>
-                <li>
-                  <FormControlLabel
-                    className="w-100"
-                    control={<Checkbox />}
-                    label="SPEKKO"
-                  />
-                </li>
-                <li>
-                  <FormControlLabel
-                    className="w-100"
-                    control={<Checkbox />}
-                    label="NESPRESSO"
-                  />
-                </li>
-                <li>
-                  <FormControlLabel
-                    className="w-100"
-                    control={<Checkbox />}
-                    label="ENERGADE"
-                  />
-                </li>
-              </ul>
-            </div>
-          </div>
-
-          <br />
-
-          <Link to="#">
-            <img
-              src="https://scontent-jnb2-1.xx.fbcdn.net/v/t39.30808-6/470209172_8960556260646496_6492859488608603634_n.jpg?stp=dst-jpg_p526x296_tt6&_nc_cat=100&ccb=1-7&_nc_sid=127cfc&_nc_ohc=vRPbBtiQBsUQ7kNvwELJf1B&_nc_oc=Adn93hBVBYnn4RSuW2FsVbRTpCQtR_MnOnbxB9dRGg0dqezYBAnkR1hv5ZKxYgCm4L0&_nc_zt=23&_nc_ht=scontent-jnb2-1.xx&_nc_gid=oONd4QOcQgECpMfoQYFORw&oh=00_AfXpMBcnL0y1lZjyeqF_8MMOxiVDFTys5qYl55sW4qjd7g&oe=68A221E9"
-              className="w-100"
-              alt=""
-            />
-          </Link>
+    <aside className="sidebar-filter">
+      {/* Categories Section */}
+      <section className="filter-section">
+        <div className="filter-header" onClick={toggleCategoryDropdown}>
+          <h3 className="filter-title">Categories</h3>
+          {isCategoryDropdownOpen ? <GoChevronUp /> : <GoChevronDown />}
         </div>
-      </div>
-    </>
+        {isCategoryDropdownOpen && (
+          <ul className="filter-list">
+            <Link to="/allproducts" onClick={handleReset}>
+              <li className={`filter-item ${!selectedCategory || selectedCategory === "allproducts" ? 'selected' : ''}`}>
+                <span>All Products</span>
+                <span className="count">({inStockCount + outOfStockCount})</span>
+              </li>
+            </Link>
+            {dynamicCategories.map(cat => (
+              // The onClick handler is now on every category Link
+              <Link to={`/products/${slugify(cat)}`} key={cat} onClick={handleReset}> 
+                <li
+                  className={`filter-item ${selectedCategory === slugify(cat) ? 'selected' : ''}`}
+                >
+                  <span>{cat}</span>
+                  <span className="count">({categoryCounts[cat] || 0})</span>
+                </li>
+              </Link>
+            ))}
+          </ul>
+        )}
+      </section>
+
+      {/* Filter Section */}
+      <section className="filter-section">
+        <div className="filter-header">
+          <h3 className="filter-title">Filter</h3>
+          <button className="reset-btn" onClick={handleReset}>
+            Reset
+          </button>
+        </div>
+        <div className="filter-info">
+          <span>{inStockCount + outOfStockCount} products</span>
+        </div>
+      </section>
+
+      {/* Availability Section */}
+      <section className="filter-section">
+        <h3 className="filter-title">Availability</h3>
+        <div className="filter-list mt-2">
+          {/* In Stock Checkbox */}
+          <label className="filter-item-checkbox flex justify-between items-center py-1">
+            <div className="flex items-center space-x-2">
+              <span>In stock</span>
+              <span className="count">({inStockCount})</span>
+            </div>
+            <input
+              type="checkbox"
+              checked={inStockOnly}
+              onChange={onInStockChange}
+              className="accent-gray-400 rounded-full"
+              style={{ width: '1rem', height: '1rem', flexShrink: 0 }}
+            />
+          </label>
+          {/* Out of Stock Checkbox */}
+          <label className="filter-item-checkbox flex justify-between items-center py-1">
+            <div className="flex items-center space-x-2">
+              <span>Out of stock</span>
+              <span className="count">({outOfStockCount})</span>
+            </div>
+            <input
+              type="checkbox"
+              checked={showOutOfStock}
+              onChange={onOutOfStockChange}
+              className="accent-gray-400 rounded-full"
+              style={{ width: '1rem', height: '1rem', flexShrink: 0 }}
+            />
+          </label>
+        </div>
+      </section>
+
+      {/* Price Section */}
+      <section className="filter-section">
+        <h3 className="filter-title">Price</h3>
+        <div className="price-info">
+          <span>The highest price is R{priceRange[1].toFixed(2)}</span>
+        </div>
+        
+        <div className="price-inputs-group">
+          <span className="price-prefix">R</span>
+          <input 
+            type="text" 
+            value={priceRange[0].toFixed(2)} 
+            readOnly 
+            className="price-input"
+          />
+          <span className="separator">-</span>
+          <span className="price-prefix">R</span>
+          <input 
+            type="text" 
+            value={priceRange[1].toFixed(2)} 
+            readOnly 
+            className="price-input"
+          />
+        </div>
+        
+        <div className="range-slider-container">
+          <RangeSlider
+            min={0}
+            max={priceRange[1]}
+            step={1}
+            value={priceRange}
+            onInput={onPriceChange}
+          />
+        </div>
+      </section>
+    </aside>
   );
 };
 

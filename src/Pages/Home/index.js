@@ -1,150 +1,164 @@
 import HomeBanner from "../../Components/HomeBanner";
-import Meat from "../../assets/images/meeat.jpg";
-
-import banner from "../../assets/images/banner2.jpg";
-import Banner4 from "../../assets/images/banner4.jpg";
-import Banner3 from "../../assets/images/banner3.jpg";
-import Button from "@mui/material/Button";
-import { IoIosArrowRoundForward } from "react-icons/io";
-import React from "react";
+import HomeCat from "../../Components/HomeCat";
+import ProductItem from "../../Components/ProductItem";
+import React, { useContext } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
-import "swiper/css/autoplay"; // Import autoplay CSS
-import { Navigation, Autoplay } from "swiper/modules"; // Import Autoplay module
-import ProductItem from "../../Components/ProductItem";
-import HomeCat from "../../Components/HomeCat";
+import "swiper/css/effect-fade";
+import { Navigation, EffectFade, Autoplay } from "swiper/modules";
+import { MyContext } from "../../App";
 
+// Import your banner images
+import bannerStrip1 from "../../assets/images/Shoprite-R5Promise-Homepagebanner-Hero-CTA-1920x400.png";
+import bannerStrip2 from "../../assets/images/slider.png";
+import bannerStrip3 from "../../assets/images/ShopriteLiquorShop-193551-UCount-WebBanners-Homepage-Hero-1920x400.png";
+import staticBanner from "../../assets/images/Shoprite-SubsidyPromise2025-Homepagebanner-Hero-CTA-1920x400-1.png";
 
 const Home = () => {
+  const context = useContext(MyContext);
+  const { productList, isReady } = context;
+
+  if (!isReady || !productList || productList.length === 0) {
+    return <div>Loading products...</div>;
+  }
+
+  const bestSellers = productList.filter((product) => product.isFeatured);
+  const newProducts = productList.filter((product) => !product.isFeatured);
+  const appliances = productList.filter((product) => product.category === 'Appliances');
+
+  const dynamicBanners = [
+    bannerStrip1,
+    bannerStrip2,
+    bannerStrip3,
+  ];
+
   return (
     <>
       <HomeBanner />
       <HomeCat />
 
-      <section className="homeProducts">
+      {/* BEST SELLERS Section with Carousel */}
+      <section className="home-products-section">
         <div className="container">
-          <div className="row">
-            <div className="col-md-3">
-              <div className="sticky">
-                <div className="banner">
-                  <img src={Meat} className="cursor w-100" alt="Meat banner" />
-                </div>
-                <div className="banner mt-4">
-                  <img
-                    src={banner}
-                    className="cursor w-100"
-                    alt="Meat banner"
-                  />
-                </div>
-              </div>
-            </div>
+          <div className="section-header">
+            <h3 className="section-title">BEST SELLERS</h3>
+          </div>
+          <Swiper
+            slidesPerView={4}
+            spaceBetween={24}
+            navigation={true}
+            modules={[Navigation]}
+            className="mySwiper"
+            breakpoints={{
+              0: { slidesPerView: 1 },
+              640: { slidesPerView: 2 },
+              768: { slidesPerView: 3 },
+              1024: { slidesPerView: 4 },
+            }}
+          >
+            {bestSellers.map((product) => (
+              <SwiperSlide key={product._id}>
+                <ProductItem product={product} />
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        </div>
+      </section>
 
-            <div className="col-md-9 productRow">
-              
-              
-              <div className="d-flex align-items-center mt-5">
-                <div className="info w-75">
-                  <h3 className="mb-0 hd">BEST SELLERS</h3>
-                  <p className="text-light text-sml mb-0">
-                    Do not miss the current offers until the end of September.
-                  </p>
-                </div>
-                <Button className="viewAllBtn ml-auto">
-                  View all <IoIosArrowRoundForward />
-                </Button>
-              </div>
+      ---
 
-              <div className="product_row w-100 mt-2">
-                <Swiper
-                  slidesPerView={4}
-                  spaceBetween={24}
-                  navigation={true}
-                  modules={[Navigation, Autoplay]} // Add Autoplay here as well
-                  autoplay={{
-                    delay: 2500,
-                    disableOnInteraction: false,
-                  }}
-                  className="mySwiper"
-                >
-                  <SwiperSlide>
-                    <ProductItem />
-                  </SwiperSlide>
-                  <SwiperSlide>
-                    <ProductItem />
-                  </SwiperSlide>
-                  <SwiperSlide>
-                    <ProductItem />
-                  </SwiperSlide>
-                  <SwiperSlide>
-                    <ProductItem />
-                  </SwiperSlide>
-                  <SwiperSlide>
-                    <ProductItem />
-                  </SwiperSlide>
-                </Swiper>
-              </div>
+      {/* Dynamic Banner Strip Section */}
+      <section className="dynamic-banner-strip">
+        <div className="container">
+          <Swiper
+            slidesPerView={1}
+            spaceBetween={0}
+            effect={"fade"}
+            autoplay={{ delay: 3000, disableOnInteraction: false }}
+            loop={true}
+            modules={[EffectFade, Autoplay]}
+            className="myBannerSwiper"
+          >
+            {dynamicBanners.map((imgSrc, index) => (
+              <SwiperSlide key={index}>
+                <img src={imgSrc} alt={`Dynamic Banner ${index + 1}`} className="w-100 banner-strip-img" />
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        </div>
+      </section>
 
-              <div className="d-flex align-items-center mt-5">
-                <div className="info w-75">
-                  <h3 className="mb-0 hd">NEW PRODUCTS</h3>
-                  <p className="text-light text-sml mb-0">
-                    New products with updated stocks.
-                  </p>
-                </div>
-                <Button className="viewAllBtn ml-auto">
-                  View all <IoIosArrowRoundForward />
-                </Button>
-              </div>
-              <div className="product_row w-100 mt-4">
-                <Swiper
-                  slidesPerView={4}
-                  spaceBetween={24}
-                  navigation={true}
-                  modules={[Navigation, Autoplay]} // Add Autoplay here as well
-                  autoplay={{
-                    delay: 2500,
-                    disableOnInteraction: false,
-                  }}
-                  className="mySwiper"
-                >
-                  <SwiperSlide>
-                    <ProductItem />
-                  </SwiperSlide>
-                  <SwiperSlide>
-                    <ProductItem />
-                  </SwiperSlide>
-                  <SwiperSlide>
-                    <ProductItem />
-                  </SwiperSlide>
-                  <SwiperSlide>
-                    <ProductItem />
-                  </SwiperSlide>
-                  <SwiperSlide>
-                    <ProductItem />
-                  </SwiperSlide>
-                </Swiper>
-              </div>
-              <div className="d-flex mt-4 mb-5 bannerSec">
-                <div className="banner ">
-                  <img src={Banner3} className="cursor w-100" alt="Banner 1" />
-                </div>
+      ---
 
-                <div className="banner ">
-                  <img src={Banner4} className="cursor w-100" alt="Banner 1" />
-                </div>
-              </div>
+      {/* NEW PRODUCTS Section with Carousel */}
+      <section className="home-products-section">
+        <div className="container">
+          <div className="section-header">
+            <h3 className="section-title">NEW PRODUCTS</h3>
+          </div>
+          <Swiper
+            slidesPerView={4}
+            spaceBetween={24}
+            navigation={true}
+            modules={[Navigation]}
+            className="mySwiper"
+            breakpoints={{
+              0: { slidesPerView: 1 },
+              640: { slidesPerView: 2 },
+              768: { slidesPerView: 3 },
+              1024: { slidesPerView: 4 },
+            }}
+          >
+            {newProducts.map((product) => (
+              <SwiperSlide key={product._id}>
+                <ProductItem product={product} />
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        </div>
+      </section>
 
-              
-            </div>
+      ---
+
+      {/* Static Banner Section */}
+      <section className="static-banner-section">
+        <div className="container">
+          <div className="static-banner-img-container">
+            <img src={staticBanner} alt="Static Promotional Banner" className="img-fluid" />
           </div>
         </div>
       </section>
 
+      ---
 
-      
-
-
+      {/* Appliances Section with Carousel and Custom Header */}
+      <section className="home-products-section">
+        <div className="container">
+          <div className="section-header-carousel">
+            <h3 className="section-title">APPLIANCES</h3>
+          </div>
+          <Swiper
+            slidesPerView={4}
+            spaceBetween={24}
+            navigation={true}
+            modules={[Navigation]}
+            className="mySwiper"
+            breakpoints={{
+              0: { slidesPerView: 1 },
+              640: { slidesPerView: 2 },
+              768: { slidesPerView: 3 },
+              1024: { slidesPerView: 4 },
+            }}
+          >
+            {appliances.map((product) => (
+              <SwiperSlide key={product._id}>
+                <ProductItem product={product} />
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        </div>
+      </section>
     </>
   );
 };

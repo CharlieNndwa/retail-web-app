@@ -1,87 +1,110 @@
-import { useContext, useEffect } from "react";
-import { MyContext } from "../../App";
-import Logo from "../../assets/images/logoo.png";
-import TextField from "@mui/material/TextField";
-import Button from "@mui/material/Button";
-import { Link } from "react-router-dom";
-import GoogleImg from "../../assets/images/google.png";
+// src/components/SignInPage.js
 
-const SignIn = () => {
-  const context = useContext(MyContext);
+import React, { useState } from "react";
+import axios from "axios";
+import {
+    Card,
+    CardContent,
+    Typography,
+    TextField,
+    Button,
+    Divider,
+} from "@mui/material";
+import { FcGoogle } from "react-icons/fc";
+import { Link } from "react-router-dom"; // Import Link for navigation
 
-  useEffect(() => {
-    context.setisHeaderFooterShow(false);
-  }, []);
+const SignInPage = ({ handleLogin }) => {
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
 
-  return (
-    <section className="section signInPage">
-      <div className="container">
-        <div className="box card p-3 shadow border-0">
-          <div className="text-center">
-            <img src={Logo} alt="logo" className="box-logo" />
-          </div>
+    const handleSubmit = async (e) => {
+        e.preventDefault();
 
-          <form className="mt-3">
-            <h2 className="mb-4">Sign In</h2>
-            <div className="form-group">
-              <TextField
-                id="standard-basic"
-                label="Email"
-                type="email"
-                required
-                variant="standard"
-                className="w-100"
-              />
-            </div>
+        try {
+            const response = await axios.post("http://localhost:8080/api/auth/signin", {
+                email,
+                password,
+            });
 
-            <div className="form-group">
-              <TextField
-                id="standard-basic"
-                label="Password"
-                type="password"
-                required
-                variant="standard"
-                className="w-100"
-              />
-            </div>
+            const { token, firstName, email: userEmail } = response.data.data;
+            
+            handleLogin({ token, firstName, email: userEmail });
+            
+        } catch (error) {
+            console.error("Login failed:", error.response.data.message);
+            alert("Login failed: " + error.response.data.message);
+        }
+    };
 
-            <a className="border-effect cursor txt">Forgot Password?</a>
+    const handleGoogleSignIn = () => {
+        window.location.href = 'http://localhost:8080/auth/google';
+    };
 
-            <div className="d-flex align-items-center mt-3 mb-3">
-              <Button className="btn-blue col btn-lg btn-big">Sign In</Button>
-              <Link to="/">
-                <Button
-                  className="btn-lg btn-big col ml-3"
-                  variant="outlined"
-                  onClick={() => context.setisHeaderFooterShow(true)}
-                >
-                  Cancel
-                </Button>
-              </Link>
-            </div>
+    return (
+        <div className="auth-page">
+            <Card className="auth-card">
+                <CardContent className="auth-card-content">
+                    <Typography
+                        variant="h5"
+                        align="center"
+                        className="auth-title"
+                    >
+                        Welcome Back 👋
+                    </Typography>
 
-            <p className="txt">
-              Not Registered?{" "}
-              <Link to="/sign-up" className="border-effect">
-                Sign Up
-              </Link>
-            </p>
+                    {/* Form */}
+                    <form onSubmit={handleSubmit} className="auth-form">
+                        <TextField
+                            label="Email Address"
+                            type="email"
+                            fullWidth
+                            required
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
+                        />
+                        <TextField
+                            label="Password"
+                            type="password"
+                            fullWidth
+                            required
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
+                        />
+                        <Button
+                            type="submit"
+                            variant="contained"
+                            fullWidth
+                            className="auth-button"
+                        >
+                            Sign In
+                        </Button>
+                    </form>
 
-            <h6 className="mt-4 text-center font-weight-bold">
-              Or continue with social account
-            </h6>
+                    <Divider sx={{ my: 3 }}>OR</Divider>
 
-            <Link to="#">
-              <Button className="loginWithGoogle mt-2" variant="outlined">
-                <img src={GoogleImg} className="W-100" alt="" />
-                Sign In With Google
-              </Button>
-            </Link>
-          </form>
+                    {/* Google Auth */}
+                    <Button
+                        onClick={handleGoogleSignIn}
+                        fullWidth
+                        variant="outlined"
+                        className="google-button"
+                        startIcon={<FcGoogle size={28} />}
+                    >
+                        Continue with Google
+                    </Button>
+
+                    <div className="auth-link-container">
+                        <Typography variant="body2" className="auth-link-text">
+                            Don't have an account?
+                        </Typography>
+                        <Button component={Link} to="/sign-up" className="auth-link-button">
+                            Sign Up
+                        </Button>
+                    </div>
+                </CardContent>
+            </Card>
         </div>
-      </div>
-    </section>
-  );
+    );
 };
 
-export default SignIn;
+export default SignInPage;
