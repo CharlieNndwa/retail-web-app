@@ -3,7 +3,7 @@ import { Button, Menu, MenuItem, Pagination } from "@mui/material";
 import { IoIosMenu } from "react-icons/io";
 import { TfiLayoutGrid4Alt } from "react-icons/tfi";
 import { FaAngleDown } from "react-icons/fa6";
-import Sidebar from "../../Components/SideBar";
+import Sidebar from "../../Components/Sidebar";
 import ProductItem from "../../Components/ProductItem";
 import { PRODUCTS } from "../../Components/data/productsData";
 import { useParams } from "react-router-dom";
