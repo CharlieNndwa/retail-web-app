@@ -10,9 +10,9 @@ import { Navigation, EffectFade, Autoplay } from "swiper/modules";
 import { MyContext } from "../../App";
 
 // Import your banner images
-import bannerStrip1 from "../../assets/images/Shoprite-R5Promise-Homepagebanner-Hero-CTA-1920x400.png";
+import bannerStrip1 from "../../assets/images/s.jpg";
 import bannerStrip2 from "../../assets/images/slider.png";
-import bannerStrip3 from "../../assets/images/ShopriteLiquorShop-193551-UCount-WebBanners-Homepage-Hero-1920x400.png";
+import bannerStrip3 from "../../assets/images/z.png";
 import staticBanner from "../../assets/images/Shoprite-SubsidyPromise2025-Homepagebanner-Hero-CTA-1920x400-1.png";
 
 const Home = () => {

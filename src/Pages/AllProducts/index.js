@@ -9,11 +9,11 @@ import { PRODUCTS } from "../../Components/data/productsData";
 import { useParams } from "react-router-dom";
 
 // Import your dynamic banner images
-import appliancesBanner from "../../assets/images/image_c4f903.jpg";
-import electronicsBanner from "../../assets/images/image_c4e97c.jpg";
-import homeKitchenBanner from "../../assets/images/image_ba0191.jpg";
-import groceriesBanner from "../../assets/images/image_7f6439.jpg";
-import defaultBanner from "../../assets/images/image_8f37c5.jpg";
+import appliancesBanner from "../../assets/images/s.jpg";
+import electronicsBanner from "../../assets/images/a.jpg";
+import homeKitchenBanner from "../../assets/images/z.png";
+import groceriesBanner from "../../assets/images/f.jpg";
+import defaultBanner from "../../assets/images/t.png";
 
 // Map slugs to the correct banner images
 const categoryBanners = {
